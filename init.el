@@ -18,6 +18,10 @@
       (package-refresh-contents)
       (package-install 'use-package)))
 (require 'use-package)
+
+; Non-ELPA libraries to be loaded from "lisp" subdirectory.
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;------------------------------------------------------------------------------------------------
 
 (use-package cl)
@@ -130,11 +134,7 @@
   :ensure adoc-mode
   :mode "\\.adoc\\'")   
 
-(use-package zenburn-theme
-  :ensure zenburn-theme
-  :init
-  (progn
-    (load-theme 'zenburn t)))
+(use-package hij-visuals) ; our own package with style changes
 
 ;---------------------------------------------------------------------------------------------------
 (custom-set-variables
@@ -143,31 +143,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
- '(column-number-mode t)
  '(desktop-globals-to-save (quote ((extended-command-history . 30) (file-name-history . 100) (grep-history . 30) (compile-history . 30) (minibuffer-history . 50) (query-replace-history . 60) (read-expression-history . 60) (regexp-history . 60) (regexp-search-ring . 20) (search-ring . 20) (shell-command-history . 50) tags-file-name register-alist)))
  '(desktop-path (quote ("~/.emacs.d/")))
  '(desktop-save t)
  '(desktop-save-mode t)
  '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
- '(initial-scratch-message nil)
- '(line-number-mode t)
  '(recentf-max-menu-items 20)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.recentf")
  '(save-place t nil (saveplace))
  '(save-place-file "~/.emacs.d/.emacs-places")
  '(savehist-mode t)
- '(scroll-bar-mode (quote right))
- '(tab-width 4)
- '(tool-bar-mode nil)
- '(visible-bell t))
+ '(tab-width 4))
  
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "outline" :slant normal :weight normal :height 113 :width normal)))))
 (provide 'init)
 ;;; init.el ends here
