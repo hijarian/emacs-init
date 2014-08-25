@@ -131,15 +131,10 @@
   :mode "\\.adoc\\'")   
 
 (use-package zenburn-theme
-  :ensure zenburn-theme)
-
-;---------------------------------------------------------------------------------------------------
-; Call find-file-dialog with C-x M-f
-;(defadvice find-file-read-args (around find-file-read-args-always-use-dialog-box act)
-;  "Simulate invoking menu item as if by the mouse; see `use-dialog-box'."
-;  (let ((last-nonmenu-event nil))
-;    ad-do-it))
-;(global-set-key (kbd "C-x M-f") 'menu-find-file-existing)
+  :ensure zenburn-theme
+  :init
+  (progn
+    (load-theme 'zenburn t)))
 
 ;-----------------------------------------------------------------------
 ; 4: KILL RING INTEGRATION IN X CLIPBOARD
@@ -174,7 +169,6 @@
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(column-number-mode t)
- '(custom-enabled-themes (quote (zenburn)))
  '(desktop-globals-to-save (quote ((extended-command-history . 30) (file-name-history . 100) (grep-history . 30) (compile-history . 30) (minibuffer-history . 50) (query-replace-history . 60) (read-expression-history . 60) (regexp-history . 60) (regexp-search-ring . 20) (search-ring . 20) (shell-command-history . 50) tags-file-name register-alist)))
  '(desktop-path (quote ("~/.emacs.d/")))
  '(desktop-save t)
