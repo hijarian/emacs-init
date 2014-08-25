@@ -57,12 +57,6 @@
     (projectile-global-mode)
     (setq projectile-enable-caching t)))
 
-(use-package helm
-  :ensure helm)
-  
-(use-package helm-projectile
-  :ensure helm-projectile)
-
 (use-package redshank
   :ensure redshank) ; FIXME: hotkeys are to be defined! see tutorial video
 	
@@ -79,6 +73,36 @@
   :init
   (progn
     (global-flycheck-mode)))
+
+(use-package icicles
+  :ensure icicles
+  :init
+  (progn
+    (icy-mode 1)))
+
+(use-package lacarte
+  :ensure lacarte
+  :bind (([?\e ?\M-x] . lacarte-execute-command)
+         ([f10] . lacarte-execute-menu-command)))
+
+(use-package auto-complete
+  :ensure auto-complete
+  :init
+  (progn
+    (use-package auto-complete-config)
+    (ac-config-default)))
+
+(use-package ac-slime
+  :ensure ac-slime
+  :init
+  (progn
+    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'slime-repl-mode))))
+
+(use-package magit
+  :ensure magit)
 
 (use-package skewer-mode
   :ensure skewer-mode
@@ -104,18 +128,18 @@
 
 (use-package adoc-mode
   :ensure adoc-mode
-  :mode "\\.adoc\\'")
+  :mode "\\.adoc\\'")   
 
 (use-package zenburn-theme
   :ensure zenburn-theme)
 
 ;---------------------------------------------------------------------------------------------------
 ; Call find-file-dialog with C-x M-f
-(defadvice find-file-read-args (around find-file-read-args-always-use-dialog-box act)
-  "Simulate invoking menu item as if by the mouse; see `use-dialog-box'."
-  (let ((last-nonmenu-event nil))
-    ad-do-it))
-(global-set-key (kbd "C-x M-f") 'menu-find-file-existing)
+;(defadvice find-file-read-args (around find-file-read-args-always-use-dialog-box act)
+;  "Simulate invoking menu item as if by the mouse; see `use-dialog-box'."
+;  (let ((last-nonmenu-event nil))
+;    ad-do-it))
+;(global-set-key (kbd "C-x M-f") 'menu-find-file-existing)
 
 ;-----------------------------------------------------------------------
 ; 4: KILL RING INTEGRATION IN X CLIPBOARD
@@ -182,6 +206,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(column-number-mode t)
  '(custom-enabled-themes (quote (zenburn)))
  '(desktop-globals-to-save (quote ((extended-command-history . 30) (file-name-history . 100) (grep-history . 30) (compile-history . 30) (minibuffer-history . 50) (query-replace-history . 60) (read-expression-history . 60) (regexp-history . 60) (regexp-search-ring . 20) (search-ring . 20) (shell-command-history . 50) tags-file-name register-alist)))
