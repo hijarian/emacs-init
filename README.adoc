@@ -4,36 +4,60 @@
 
 My init file for emacs.
 
-. Add MELPA package repository by default.
-. Introduce amazing `use-package` facility which greatly simplifies the further config.
-. For Common Lisp development: 
-.. Slime
-.. Paredit
-.. Evil + Evil-Paredit
-.. Rainbow Delimiters
-.. Redshank
-.. EMR
-. For Web development:
-.. SKewer-mode
-.. js2-mode
-.. web-mode
-. Go to Definition and Autocomplete:
-.. projectile
-.. helm
-.. helm-projectile
-. Flycheck
-. `adoc-mode` because for development articles I write now exclusively in Asciidoc.
-. Special set of customizations so that Emacs will be integrated with X clipboard.
-. Make F2 work as amazingly simple terminal launcher
+. Organizational changes:
+.. Add MELPA package repository by default.
+.. Introduce amazing `use-package` facility which greatly simplifies the further config.
+.. Everything inside `.emacs.d`, can migrate easily if needed.
+
+. Global improvements:
+.. Evil
+.. Projectile
+.. Icicles (It's way more suited for my tastes than helm)
+.. Flycheck
+.. LaCarte (menu access from keyboard)
+.. Auto Complete
+.. Magit (I use Git with almost everything, except raster images)
+
+. Sessions persistence:
+.. Recent file history enabled.
+.. Last visited buffers are remembered using `desktop-save-mode` feature.
+.. Everything except window splitting settings is saved between launches of Emacs.
+
+. Behavior changes:
+.. Do not insert TAB symbols
+.. Ask "y" and "n" instead of "yes" and "no"
+.. Do not confirm opening nonexistent files
+.. Automatically revert buffers from disk
+
 . Visual changes:
 .. No beeping (thank you God)
 .. No toolbar
+.. Not blinking cursor
 .. No startup screen or scratch buffer message, by default open blank scratch buffer.
 .. Zenburn theme
 .. Show line and column numbers in modeline.
 .. Scrollbar to the right, not left.
-. Organizational changes:
-.. Everything inside `.emacs.d`, can migrate easily if needed.
-.. Recent file history enabled.
-.. Last visited buffers are remembered using `desktop-save-mode` feature.
-.. Everything except window splitting settings is saved between launches of Emacs.
+.. Tab width 4 instead of 8
+.. Buffer names are unique by appending directory name
+.. `smart-mode-line`
+.. `diff-hl-mode`
+.. Open maximized by default
+.. DejaVu Sans Mono font-face
+
+. For Common Lisp development: 
+.. Slime
+.. Paredit
+.. Rainbow Delimiters
+.. Redshank
+.. EMR
+
+. For Web development:
+.. Skewer-mode
+.. js2-mode
+.. web-mode
+
+. File types support:
+.. Markdown
+.. AsciiDoc
+.. JSON
+
