@@ -4,6 +4,14 @@
 
 My init file for emacs.
 
+== Braindead installation
+
+Replace the contents of your `~/.emacs.d/` with contents of this repo.
+All packages will be installed automatically at first startup
+(it can be quite slow because of this, take your time).
+
+== Features
+
 . Organizational changes:
 .. Add MELPA package repository by default.
 .. Introduce amazing `use-package` facility which greatly simplifies the further config.
