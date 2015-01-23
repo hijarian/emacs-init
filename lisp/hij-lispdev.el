@@ -10,7 +10,7 @@
   :init
   (progn
     (setq inferior-lisp-program "sbcl") ; Absolute paths will not work on Windows (AFAIK), just put SBCL into $PATH.
-    (setq slime-contribs '(slime-fancy))))
+    (setq slime-contribs '(slime-fancy slime-asdf))))
 
 (use-package paredit ; Improvements for sexp interaction
   :ensure paredit)
