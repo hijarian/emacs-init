@@ -13,5 +13,9 @@
  confirm-nonexistent-file-or-buffer nil ; create buffers for nonexistent files automatically
  indent-tabs-mode nil) ; never use tabs for alignment (when you hit TAB key)
 
+(add-hook 'after-save-hook 'delete-trailing-whitespace)
+
+(electric-pair-mode 1) ; Automatically insert closing brackets
+
 (provide 'hij-interaction)
 ;;; hij-interaction ends here
