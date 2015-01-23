@@ -37,18 +37,13 @@
     (setq uniquify-buffer-name-style 'forward) ; Unique modificator like directory name is APPENDED
     (setq uniquify-min-dir-content 2)))
 
-(use-package smart-mode-line
-  :ensure smart-mode-line
-  :init
-  (progn
-    (sml/setup)
-    (setq sml/no-confirm-load-theme t)))
-
 (use-package diff-hl-margin-mode ; Changed lines according to `git diff` are highlighted
   :ensure diff-hl
   :init
   (progn
     (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)))
+
+(global-visual-line-mode 1) ; Wrap words at word boundary
 
 (provide 'hij-visuals)
 ;;; hij-visuals ends here
