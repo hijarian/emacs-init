@@ -4,11 +4,6 @@
 ;;; Customizations of UI, theme and font faces.
 
 ;;; Code:
-(use-package zenburn-theme
-  :ensure zenburn-theme
-  :init
-  (progn
-    (load-theme 'zenburn t)))
 
 (column-number-mode t)
 (line-number-mode t)
