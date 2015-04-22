@@ -13,6 +13,14 @@
   (progn
     (evil-mode 1)))
 
+(use-package helm
+  :ensure helm
+  :init
+  (progn
+	(use-package helm-config
+	  :bind (([?\M-x] . helm-M-x)))
+	(helm-mode 1)))
+
 (use-package projectile ; I want project navigation and Go to Definition
   :ensure projectile
   :init
@@ -20,17 +28,18 @@
     (projectile-global-mode)
     (setq projectile-enable-caching t)))
 
+(use-package helm-projectile
+  :ensure helm-projectile
+  :init
+  (progn
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)))
+
 (use-package flycheck ; I want syntax checking
   :ensure flycheck
   :init
   (progn
     (global-flycheck-mode)))
-
-(use-package icicles ; I want autocompletion
-  :ensure icicles
-  :init
-  (progn
-    (icy-mode 1)))
 
 (use-package lacarte ; I want access for menu commands from keyboard
   :ensure lacarte
@@ -45,7 +54,10 @@
     (ac-config-default)))
 
 (use-package magit ; I want Git integration because I use it with everything I write
-  :ensure magit)
+  :ensure magit
+  :init
+  (progn
+     (setq magit-last-seen-setup-instructions "1.4.0")))
 
 (provide 'hij-core)
 ;;; hij-core.el ends here
